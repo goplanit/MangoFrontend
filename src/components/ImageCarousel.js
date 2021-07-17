@@ -50,9 +50,9 @@ function ImageCarousel() {
   const classes = useStyles();
 
   return (
-  <Outer>
-    <div className={classes.root}>      
-        {/* <Wrapper> */}
+    // <Outer>
+    <div className={classes.root}>
+      {/* <Wrapper> */}
       <ImageList className={classes.imageList} cols={2.5}>
         {/* <Caroucel_img> */}
         {itemData.map((item) => (
@@ -63,7 +63,7 @@ function ImageCarousel() {
         {/* </Caroucel_img> */}
       </ImageList>
       {/* </Wrapper> */}
-      </Outer>
+      {/* </Outer> */}
     </div>
   );
 }
