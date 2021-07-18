@@ -2,19 +2,43 @@ import React from "react";
 import styled from "styled-components";
 
 const Grid = (props) => {
-  const { is_flex, width, margin, padding, bg, children, center, _onClick } = props;
+  const {
+    is_flex,
+    width,
+    padding,
+    margin,
+    bg,
+    children,
+    height,
+    _onClick,
+    display,
+    border_radius,
+    justifyContent,
+    alignItems,
+    shadow,
+    center,
+  } = props;
 
   const styles = {
-      is_flex: is_flex,
-      width: width,
-      margin: margin,
-      padding: padding,
-      bg: bg,
-      center: center,
+    is_flex,
+    width,
+    margin,
+    padding,
+    bg,
+    height,
+    display,
+    border_radius,
+    justifyContent,
+    alignItems,
+    shadow,
+    center,
   };
+
   return (
     <React.Fragment>
-      <GridBox {...styles} onClick={_onClick}>{children}</GridBox>
+      <GridBox {...styles} onClick={_onClick}>
+        {children}
+      </GridBox>
     </React.Fragment>
   );
 };
@@ -27,21 +51,30 @@ Grid.defaultProps = {
   margin: false,
   bg: false,
   center: false,
-  _onClick: () => {}
+  _onClick: () => {},
+  height: false,
+  border_radius: "10px",
+  justifyContent: false,
+  alignItems: false,
+  shadow: false,
 };
 
 const GridBox = styled.div`
   width: ${(props) => props.width};
-  height: 100%;
   box-sizing: border-box;
-  ${(props) => (props.padding ? `padding: ${props.padding};` : "")}
-  ${(props) => (props.margin ? `margin: ${props.margin};` : "")}
-  ${(props) => (props.bg ? `background-color: ${props.bg};` : "")}
+  /* background-color: #eae7e7; */
+  border-radius: ${(props) => props.border_radius};
+  ${(props) => (props.height ? `height: ${props.height};` : "")}
+  ${(props) => (props.padding ? `padding: ${props.padding};` : "")};
+  ${(props) => (props.margin ? `margin: ${props.margin};` : "")};
+  ${(props) => (props.bg ? `background-color: ${props.bg};` : "")};
+  ${(props) =>
+    props.justifyContent ? `justify-content: ${props.justifyContent};` : ""};
+  ${(props) => (props.alignItems ? `align-items: ${props.alignItems};` : "")};
   ${(props) =>
     props.is_flex
       ? `display: flex; align-items: center; justify-content: space-between; `
       : ""}
-  ${(props) => props.center? `text-align: center;`: ""}
 `;
 
 export default Grid;
