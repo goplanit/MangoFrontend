@@ -40,44 +40,44 @@ const DetailHeader = (props) => {
     <React.Fragment>
       <Grid>
         <Header>
-          <Header_logo>
+          <HeaderLogo>
             <Logo
               src={DetailLogo}
               onClick={(props) => {
                 document.location.href = "/";
               }}
             />
-          </Header_logo>
-          <Header_SearchBox>
+          </HeaderLogo>
+          <HeaderSearchBox>
             <SearchIcon className={classes.search_icon} fontSize="50" />
             <searchLabel>
-              <Input_text />
+              <InputText />
             </searchLabel>
-          </Header_SearchBox>
-          <Header_MenuList>
-            <Header_MenuItem>
-              <Header_MenuLink>
-                <Header_MenuText>EAT딜</Header_MenuText>
-              </Header_MenuLink>
-            </Header_MenuItem>
-            <Header_MenuItem>
-              <Header_MenuLink>
-                <Header_MenuText>맛집 리스트</Header_MenuText>
-              </Header_MenuLink>
-            </Header_MenuItem>
-            <Header_MenuItem>
-              <Header_MenuLink>
-                <Header_MenuText>망고스토리</Header_MenuText>
-              </Header_MenuLink>
-            </Header_MenuItem>
-          </Header_MenuList>
-          <Header_IconButtonList>
-            <Header_IconButton>
+          </HeaderSearchBox>
+          <HeaderMenuList>
+            <HeaderMenuItem>
+              <HeaderMenuLink>
+                <HeaderMenuText>EAT딜</HeaderMenuText>
+              </HeaderMenuLink>
+            </HeaderMenuItem>
+            <HeaderMenuItem>
+              <HeaderMenuLink>
+                <HeaderMenuText>맛집 리스트</HeaderMenuText>
+              </HeaderMenuLink>
+            </HeaderMenuItem>
+            <HeaderMenuItem>
+              <HeaderMenuLink>
+                <HeaderMenuText>망고스토리</HeaderMenuText>
+              </HeaderMenuLink>
+            </HeaderMenuItem>
+          </HeaderMenuList>
+          <HeaderIconButtonList>
+            <HeaderIconButton>
               <Badge badgeContent={5} color="error">
                 <PermIdentityIcon className={classes.PermIdentityIcon} />
               </Badge>
-            </Header_IconButton>
-          </Header_IconButtonList>
+            </HeaderIconButton>
+          </HeaderIconButtonList>
         </Header>
       </Grid>
     </React.Fragment>
@@ -96,6 +96,7 @@ const Header = styled.div`
   box-align: center;
   top: 0;
   left: 0;
+  width: 100%;
   z-index: 900;
   height: 61px;
   border-bottom: 1px solid #dbdbdb;
@@ -104,7 +105,7 @@ const Header = styled.div`
   background-color: #ffffff;
 `;
 
-const Header_logo = styled.i`
+const HeaderLogo = styled.i`
   display: flex;
   justify-content: center;
   box-pack: center;
@@ -120,9 +121,9 @@ const Logo = styled.img`
   background-repeat: no-repeat;
 `;
 
-const Header_SearchBox = styled.div`
+const HeaderSearchBox = styled.div`
   min-width: 0;
-  width: 30vw;
+  width: 100vw;
   padding-left: 20px;
   display: flex;
   flex-direction: row;
@@ -144,18 +145,20 @@ const searchLabel = styled.label`
   width: 70%;
 `;
 
-const Header_MenuList = styled.ul`
+const HeaderMenuList = styled.ul`
   display: flex;
   flex-direction: row;
   box-direction: normal;
   box-orient: horizontal;
   height: 100%;
+  width: 100%;
   box-orient: horizontal;
   margin: auto;
   padding-inline-start: 0px;
+  justify-content: flex-end;
 `;
 
-const Header_MenuItem = styled.li`
+const HeaderMenuItem = styled.li`
   display: flex;
   justify-content: center;
   box-pack: center;
@@ -166,7 +169,7 @@ const Header_MenuItem = styled.li`
   box-sizing: border-box;
 `;
 
-const Header_MenuLink = styled.a`
+const HeaderMenuLink = styled.a`
   display: flex;
   justify-content: center;
   box-pack: center;
@@ -177,21 +180,21 @@ const Header_MenuLink = styled.a`
   height: 100%;
 `;
 
-const Header_MenuText = styled.span`
+const HeaderMenuText = styled.span`
   position: relative;
   display: flex;
   font-size: 16px;
   color: #888888;
-  font-weight: bold;
+  font-weight: 600;
 `;
 
-const Header_IconButtonList = styled.ul`
+const HeaderIconButtonList = styled.ul`
   display: flex;
   height: 100%;
   padding-inline-start: 0px;
 `;
 
-const Header_IconButton = styled.li`
+const HeaderIconButton = styled.li`
   display: flex;
   justify-content: center;
   height: 100%;
@@ -204,21 +207,21 @@ const Header_IconButton = styled.li`
   cursor: pointer;
 `;
 
-const Input_text = styled.input.attrs({
+const InputText = styled.input.attrs({
   type: "text",
   placeholder: "지역, 식당 또는 음식",
   autocomplete: "off",
-  maxlength: "50",
 })`
   height: 30px;
   border: 0;
-  font-size: 20px;
+  font-size: 16px;
+  font-weight: 600;
   border-color: black;
-  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
   cursor: text;
   margin: 0em;
   border-color: none;
   outline: none;
+  width: 100vw;
 `;
 
 export default DetailHeader;

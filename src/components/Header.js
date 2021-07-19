@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Image, Text } from "../elements";
+import { Image, Text } from "../elements/Index";
 
 const Header = (props) => {
   return (

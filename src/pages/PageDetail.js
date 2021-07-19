@@ -1,23 +1,55 @@
 import React from "react";
 import styled from "styled-components";
+import { Grid } from "../elements/Index";
 import DetailHeader from "../components/DetailHeader";
 import ImageCarousel from "../components/ImageCarousel";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
+import StoreDetail from "../components/StoreDetail";
+import DetailSide from "../components/DetailSide";
 
 const PostDetail = (props) => {
   return (
     <React.Fragment>
-      <CssBaseline />
-      <Container maxWidth="sm">
-        <React.Fragment>
-          <DetailHeader />
-          <ImageCarousel />
-        </React.Fragment>
-      </Container>
+      <Grid>
+        <DetailHeader />
+        <ImageCarousel />
+      </Grid>
+
+      <Grid>
+        <ColumnWrapper>
+          <ColumnContents>
+            <StoreDetail />
+          </ColumnContents>
+          <SideWrap>
+            <DetailSide />
+          </SideWrap>
+        </ColumnWrapper>
+      </Grid>
     </React.Fragment>
   );
 };
+
+const ColumnWrapper = styled.div`
+  position: relative;
+  display: flex;
+  border-top: 6px solid #fff;
+  width: 100%;
+  height: 100%;
+`;
+
+const ColumnContents = styled.div`
+  width: calc(100% - 400px);
+  height: 100%;
+  /* background-color: #fff; */
+  flex: 1;
+  float: left;
+  padding: 0 20px;
+`;
+
+const SideWrap = styled.div`
+  position: relative;
+  float: right;
+  width: 400px;
+  background-color: #f6f6f6;
+`;
 
 export default PostDetail;

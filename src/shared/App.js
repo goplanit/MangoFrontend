@@ -7,18 +7,20 @@ import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configureStore";
 
 // pages
-import DetailHeader from "../components/DetailHeader";
 import PageDetail from "../pages/PageDetail";
 import Main from "../pages/Main";
 import TopLists from "../pages/TopLists";
+import { Grid } from "../elements/Index";
 
 function App() {
   return (
     <ReactContainer>
-      <DetailHeader />
+      <BrowserRouter>
+        <Route path="/restaurants" exact component={PageDetail} />
+      </BrowserRouter>
+
       <BrowserRouter>
         <ConnectedRouter history={history}>
-          <Route path="/restaurants" exact component={PageDetail} />;
           <Route path="/" exact component={Main} />
           <Route path="/top_lists" exact component={TopLists} />
         </ConnectedRouter>

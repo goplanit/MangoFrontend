@@ -53,7 +53,7 @@ Grid.defaultProps = {
   center: false,
   _onClick: () => {},
   height: false,
-  border_radius: "10px",
+  border_radius: false,
   justifyContent: false,
   alignItems: false,
   shadow: false,
@@ -62,7 +62,6 @@ Grid.defaultProps = {
 const GridBox = styled.div`
   width: ${(props) => props.width};
   box-sizing: border-box;
-  /* background-color: #eae7e7; */
   border-radius: ${(props) => props.border_radius};
   ${(props) => (props.height ? `height: ${props.height};` : "")}
   ${(props) => (props.padding ? `padding: ${props.padding};` : "")};
