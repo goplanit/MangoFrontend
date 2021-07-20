@@ -11,6 +11,7 @@ import PageDetail from "../pages/PageDetail";
 import Main from "../pages/Main";
 import TopLists from "../pages/TopLists";
 import { Grid } from "../elements/Index";
+import ReviewWrite from '../pages/ReviewWrite';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <BrowserRouter>
         <ConnectedRouter history={history}>
           <Route path="/" exact component={Main} />
+          <Route path="/reviews/:shop_name" exact component={ReviewWrite} />
           <Route path="/top_lists" exact component={TopLists} />
         </ConnectedRouter>
       </BrowserRouter>

@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import NearStore from "./NearStore";
+import MapAPI from "./Map";
 
 const DetailSide = (props) => {
   console.log(props);
 
   return (
     <ColumnSide>
-      <MapContainer />
+      <MapContainer>
+        <MapAPI />
+      </MapContainer>
       <Inner>
         <NearStores>
           <NearStoreTitle>주변 인기 식당</NearStoreTitle>
@@ -33,7 +36,7 @@ const ColumnSide = styled.div`
 const MapContainer = styled.div`
   position: relative;
   overflow: hidden;
-  background: url(https://i0.wp.com/magazine.contenta.co/wp-content/uploads/2015/12/-e1452007860210.gif?fit=600%2C389&ssl=1);
+  /* background: url(https://i0.wp.com/magazine.contenta.co/wp-content/uploads/2015/12/-e1452007860210.gif?fit=600%2C389&ssl=1); */
   display: block;
   height: 328px;
   width: 100%;

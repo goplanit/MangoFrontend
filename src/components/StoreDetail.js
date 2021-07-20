@@ -3,6 +3,8 @@ import styled from "styled-components";
 import CreateIcon from "@material-ui/icons/Create";
 import StarOutlineIcon from "@material-ui/icons/StarOutline";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import Review from "./Review";
+import ReviewHeader from "./ReviewHeader";
 
 const StoreDetail = (props) => {
   console.log(props);
@@ -21,16 +23,16 @@ const StoreDetail = (props) => {
                 <Branch>{props.branch}</Branch>
               </Title>
               <StoreActionButtonWrap>
-                <ReviewWriteButton>
-                  <ReviewWriteButtonIcon>
-                    <CreateIcon fontSize="large" />
-                  </ReviewWriteButtonIcon>
+                <ReviewWriteButton
+                  onClick={() => {
+                    document.location.href = "/reviews/:shop_name";
+                  }}
+                >
+                  <ReviewWriteButtonIcon />
                   <ReviewWriteButtonText>리뷰쓰기</ReviewWriteButtonText>
                 </ReviewWriteButton>
                 <WannaGo>
-                  <WannaGoBtn>
-                    <StarOutlineIcon fontSize="large" />
-                  </WannaGoBtn>
+                  <WannaGoBtn />
                   <WannaGoTxt>가고싶다</WannaGoTxt>
                 </WannaGo>
               </StoreActionButtonWrap>
@@ -121,6 +123,15 @@ const StoreDetail = (props) => {
             </InfoBody>
           </Info>
           <UpdateDate>업데이트: {props.reviews.createdAt}</UpdateDate>
+          <Section>
+            <SectionLine />
+          </Section>
+          <ReviewHeader />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
         </Storebox>
       </Outer>
     </React.Fragment>
@@ -203,6 +214,9 @@ const ReviewWriteButton = styled.div`
   margin: 0 19px 0 0;
   border: none;
   height: 100%;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const ReviewWriteButtonIcon = styled.i`
@@ -211,6 +225,7 @@ const ReviewWriteButtonIcon = styled.i`
   height: 32px;
   background-size: cover;
   background-repeat: no-repeat;
+  background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/review_writing_icon.png);
 `;
 
 const ReviewWriteButtonText = styled.span`
@@ -235,8 +250,11 @@ const WannaGoBtn = styled.div`
   display: block;
   width: 32px;
   height: 32px;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+  background-position: -935px -583px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const WannaGoTxt = styled.span`
@@ -337,6 +355,14 @@ const UpdateDate = styled.p`
   font-size: 12px;
   text-align: right;
   color: rgba(79, 79, 79, 0.6);
+`;
+
+const Section = styled.div`
+  width: 800px;
+  margin: 0 auto;
+`;
+const SectionLine = styled.div`
+  border-bottom: 1px solid #e9e9e9;
 `;
 
 StoreDetail.defaultProps = {
