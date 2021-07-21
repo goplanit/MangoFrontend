@@ -1,7 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
+//Redux
+import { useSelector } from "react-redux";
+import { actionCreators as shopActions } from "../redux/modules/Review_module";
+
 const Review = (props) => {
+  const reviewData = useSelector((state) => state.review.reviews);
+  const createAt = reviewData.createdAt;
+  const updateDate = createAt.split("T", 1);
+  console.log(updateDate);
+
   return (
     <Container>
       <ReviewItem>
@@ -11,22 +20,22 @@ const Review = (props) => {
               <UserPictureWrap>
                 <UserPictureimg />
               </UserPictureWrap>
-              <UserPictureName>{props.reviews.nickname}</UserPictureName>
+              <UserPictureName>{reviewData.nickname}</UserPictureName>
               <UserstateWrap>
                 <UserstateReviewCnt>
                   <EmijiWrite />
-                  {props.reviews.ReviewWriteCnt}
+                  {reviewData.ReviewWriteCnt}
                 </UserstateReviewCnt>
                 <UserstateReviewCnt>
                   <EmijiFriend />
-                  {props.reviews.ReviewFriendCnt}
+                  {reviewData.ReviewFriendCnt}
                 </UserstateReviewCnt>
               </UserstateWrap>
             </ReviewUser>
             <ReviewContents>
               <ReviewContentWrap>
-                <ReviewContentText>{props.reviews.text}</ReviewContentText>
-                <ReviewDate>{props.reviews.createdAt}</ReviewDate>
+                <ReviewContentText>{reviewData.text}</ReviewContentText>
+                <ReviewDate>{updateDate[0]}</ReviewDate>
               </ReviewContentWrap>
             </ReviewContents>
             <ReviewEmojiWrap>
@@ -179,7 +188,7 @@ const ReviewEmojiText = styled.span`
   font-weight: 600;
 `;
 
-Review.defaultProps = {
+/* Review.defaultProps = {
   reviews: {
     reviewId: "12d102d9j1d09cds109",
     shop_name: "꼬꼬닭",
@@ -195,6 +204,6 @@ Review.defaultProps = {
     ReviewWriteCnt: "1030",
     ReviewFriendCnt: "162",
   },
-};
+}; */
 
 export default Review;

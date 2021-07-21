@@ -3,11 +3,16 @@ import styled from "styled-components";
 import CreateIcon from "@material-ui/icons/Create";
 import StarOutlineIcon from "@material-ui/icons/StarOutline";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import ShopInfo from "./ShopInfo";
 import Review from "./Review";
 import ReviewHeader from "./ReviewHeader";
 
+//Redux
+import { useSelector, useDispatch } from "react-redux";
+import { actionCreators as ShopActions } from "../redux/modules/Shop_module";
+
 const StoreDetail = (props) => {
-  console.log(props);
+  const dispatch = useDispatch();
 
   return (
     <React.Fragment>
@@ -16,9 +21,9 @@ const StoreDetail = (props) => {
           <StoreHead>
             <StoreTitle>
               <Title>
-                <StoreName>{props.reviews.shop_name} </StoreName>
+                <StoreName>{props.shopName} </StoreName>
                 <RateOuter>
-                  <RateNumber>{props.rate}</RateNumber>
+                  <RateNumber>{props.star}</RateNumber>
                 </RateOuter>
                 <Branch>{props.branch}</Branch>
               </Title>
@@ -52,77 +57,8 @@ const StoreDetail = (props) => {
               </CntWrap>
             </StatusWrap>
           </StoreHead>
-          <Info>
-            <InfoBody>
-              <InfoBody>
-                <InfoTr>
-                  <InfoTh>주소</InfoTh>
-                  <InfoTd>
-                    {props.address}
-                    <br />
-                    <InfoAddr>지번</InfoAddr>
-                    <InfoAddrText>{props.oldAddress}</InfoAddrText>
-                  </InfoTd>
-                </InfoTr>
-                <InfoTr>
-                  <InfoTh>전화번호</InfoTh>
-                  <InfoTd>{props.phoneNumber}</InfoTd>
-                </InfoTr>
-                <InfoTr>
-                  <InfoTh>음식종류</InfoTh>
-                  <InfoTd>{props.food}</InfoTd>
-                </InfoTr>
-                <InfoTr>
-                  <InfoTh>가격대</InfoTh>
-                  <InfoTd>{props.price}</InfoTd>
-                </InfoTr>
-                <InfoTr>
-                  <InfoTh>주차</InfoTh>
-                  <InfoTd>{props.parking}</InfoTd>
-                </InfoTr>
-                <InfoTr>
-                  <InfoTh>영업시간</InfoTh>
-                  <InfoTd>{props.openTime}</InfoTd>
-                </InfoTr>
-                <InfoTr>
-                  <InfoTh>웹사이트</InfoTh>
-                  <InfoTd>{props.webSite}</InfoTd>
-                </InfoTr>
-                <InfoTr>
-                  <InfoTh>메뉴</InfoTh>
-                  <InfoTd>
-                    <MenuItem>
-                      <MenuDetail>{props.menu}</MenuDetail>
-                      <MenuDetail>{props.priceWon}</MenuDetail>
-                    </MenuItem>
-                    <MenuItem>
-                      <MenuDetail>{props.menu}</MenuDetail>
-                      <MenuDetail>{props.priceWon}</MenuDetail>
-                    </MenuItem>
-                    <MenuItem>
-                      <MenuDetail>{props.menu}</MenuDetail>
-                      <MenuDetail>{props.priceWon}</MenuDetail>
-                    </MenuItem>
-                    <MenuItem>
-                      <MenuDetail>{props.menu}</MenuDetail>
-                      <MenuDetail>{props.priceWon}</MenuDetail>
-                    </MenuItem>
-                    <MenuItem>
-                      <MenuDetail>{props.menu}</MenuDetail>
-                      <MenuDetail>{props.priceWon}</MenuDetail>
-                    </MenuItem>
-                  </InfoTd>
-                </InfoTr>
-                <InfoTr>
-                  <InfoTh></InfoTh>
-                  <InfoTd>
-                    <MenuPic />
-                  </InfoTd>
-                </InfoTr>
-              </InfoBody>
-            </InfoBody>
-          </Info>
-          <UpdateDate>업데이트: {props.reviews.createdAt}</UpdateDate>
+          <ShopInfo />
+          <UpdateDate>업데이트: {props.update_Date}</UpdateDate>
           <Section>
             <SectionLine />
           </Section>
@@ -282,74 +218,6 @@ const Cnt = styled.span`
   font-size: 15px;
 `;
 
-const Info = styled.table`
-  padding: 20px 0;
-  position: relative;
-`;
-const InfoBody = styled.tbody`
-  display: table-row-group;
-  vertical-align: middle;
-  border-color: inherit;
-`;
-const InfoTr = styled.tr`
-  display: table-row;
-  vertical-align: inherit;
-  border-color: inherit;
-`;
-const InfoTh = styled.th`
-  width: 110px;
-  font-size: 0.9rem;
-  color: rgba(79, 79, 79, 0.6);
-  line-height: 1.7;
-  text-align: left;
-  vertical-align: top;
-  padding-right: 10px;
-  padding-bottom: 5px;
-`;
-const InfoTd = styled.td`
-  font-size: 0.9rem;
-  color: #4f4f4f;
-  line-height: 1.7;
-  text-align: left;
-  vertical-align: middle;
-  padding-bottom: 5px;
-`;
-const InfoAddr = styled.span`
-  border-radius: 2px;
-  border: solid 1px #e9e9e9;
-  padding: 0 4px;
-  margin-right: 2px;
-  font-size: 12px;
-  color: #7f7f7f;
-`;
-const InfoAddrText = styled.span`
-  font-size: 14px;
-  color: #7f7f7f;
-  line-height: normal;
-`;
-
-const MenuItem = styled.li`
-  display: flex;
-  flex-direction: row;
-  box-direction: normal;
-  box-orient: horizontal;
-  border-bottom: 1px solid #e9e9e9;
-  margin-bottom: 4px;
-`;
-const MenuDetail = styled.span`
-  flex: 1;
-  display: inline-block;
-  margin-right: 30px;
-  white-space: normal;
-`;
-const MenuPic = styled.img`
-  overflow: hidden;
-  margin-top: 6px;
-  padding-top: 0;
-  width: 103px;
-  height: 103px;
-`;
-
 const UpdateDate = styled.p`
   padding: 4px 0 20px 0;
   font-size: 12px;
@@ -365,7 +233,7 @@ const SectionLine = styled.div`
   border-bottom: 1px solid #e9e9e9;
 `;
 
-StoreDetail.defaultProps = {
+/* StoreDetail.defaultProps = {
   address: "서울특별시 용산구 대사관로 20",
   oldAddress: "서울시 용산구 한남동 686-63",
   phoneNumber: "02-792-0628",
@@ -378,15 +246,39 @@ StoreDetail.defaultProps = {
   priceWon: "19,000원",
   rate: "4.5",
   branch: "한남점",
-  reviews: {
-    reviewId: "12d102d9j1d09cds109",
-    shop_name: "효도치킨",
-    nickname: "꼬꼬수진",
-    profilePic: "img url",
-    text: "맛좋네요",
-    rate: "맛있다",
-    createdAt: "2021-07-17T20:36:59.414Z",
-  },
+}; */
+
+StoreDetail.defaultProps = {
+  shopName: "중앙찜닭",
+  keyword: "759_jjimdak",
+  star: 3.7,
+  shopId: "60f6d2ed905aa213046cff17",
+  branch: "광주 동구점",
+  parking: "주차공간 없음",
+  /* website: "https://www.mangoplate.com/restaurants/TKb98SN3qdOr", */
+  update_Date: "2020.02.04",
+  views: 0, //number
+  reviews: 0,
+  likes: 0,
+  data: [
+    //Array
+    ["주소", "광주광역시 동구 동명로25번길 4-1"],
+    ["지번", " 광주시 동구 동명동 200-107"],
+    ["전화번호", "070-8563-2569"],
+    ["음식 종류", "카페 / 디저트"],
+    ["가격대", "만원 미만"],
+  ],
+  menuList: [
+    ["데일리 생선구이", "28,000원"],
+    ["채끝스테이크", "36,000원"],
+  ],
+  tags: ["광주", "술집"],
+  img_url: [
+    "https://mp-seoul-image-",
+    "https://mp-seoul-image-production-",
+    "https://mp-seoul-image-production-",
+    "https://mp-seoul-image-production-",
+  ],
 };
 
 export default StoreDetail;

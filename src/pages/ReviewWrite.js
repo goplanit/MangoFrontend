@@ -1,8 +1,14 @@
-import { style } from "@material-ui/system";
-import React from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 
 const ReviewWrite = (props) => {
+  const [textLength, setTextLength] = useState("");
+
+  const handleChange = (event) => {
+    setTextLength(event.target.value);
+    console.log(setTextLength);
+  };
+
   return (
     <Body>
       <Main>
@@ -56,13 +62,15 @@ const ReviewWrite = (props) => {
                       </ReviewWritingRecommandPicker>
                     </ReviewWritingRecommandWrap>
                     <ReviewEditor
+                      onChange={handleChange}
+                      value={textLength}
                       maxlength="10000"
                       placeholder="
               주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!"
                     />
                   </ReviewWritingEditorbox>
                   <ReviewEditorTextLengthWrap>
-                    <ReviewEditorLength>0</ReviewEditorLength>
+                    <ReviewEditorLength>{setTextLength}</ReviewEditorLength>
                     <ReviewEditorLength>/</ReviewEditorLength>
                     <ReviewEditorLength>10,000</ReviewEditorLength>
                   </ReviewEditorTextLengthWrap>
@@ -78,7 +86,12 @@ const ReviewWrite = (props) => {
                 </ReviewImgWarp>
                 <ReviewImgContainerList>
                   <ReviewImgItemList>
-                    <ReviewImgAddButton>
+                    <ReviewImgAddButton for="input-button">
+                      <input
+                        type="file"
+                        id="input-button"
+                        style={{ display: "none" }}
+                      />
                       <AddBtn />
                     </ReviewImgAddButton>
                   </ReviewImgItemList>
@@ -338,7 +351,7 @@ const ReviewImgItemList = styled.li`
   margin-right: 9px;
   margin-bottom: 9px;
 `;
-const ReviewImgAddButton = styled.div`
+const ReviewImgAddButton = styled.label`
   opacity: 1;
   transform: scale(1);
   display: flex;

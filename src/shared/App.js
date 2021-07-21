@@ -11,7 +11,7 @@ import PageDetail from "../pages/PageDetail";
 import Main from "../pages/Main";
 import TopLists from "../pages/TopLists";
 import { Grid } from "../elements/Index";
-import ReviewWrite from '../pages/ReviewWrite';
+import ReviewWrite from "../pages/ReviewWrite";
 
 function App() {
   return (

@@ -4,8 +4,6 @@ import NearStore from "./NearStore";
 import MapAPI from "./Map";
 
 const DetailSide = (props) => {
-  console.log(props);
-
   return (
     <ColumnSide>
       <MapContainer>

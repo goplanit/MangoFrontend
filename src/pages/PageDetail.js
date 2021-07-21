@@ -1,12 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import { Grid } from "../elements/Index";
+
+//Component
 import DetailHeader from "../components/DetailHeader";
 import ImageCarousel from "../components/ImageCarousel";
 import StoreDetail from "../components/StoreDetail";
 import DetailSide from "../components/DetailSide";
+import Footer from "../components/Footer";
 
 const PostDetail = (props) => {
+
   return (
     <React.Fragment>
       <Grid>
@@ -23,6 +27,7 @@ const PostDetail = (props) => {
             <DetailSide />
           </SideWrap>
         </ColumnWrapper>
+        <Footer />
       </Grid>
     </React.Fragment>
   );
