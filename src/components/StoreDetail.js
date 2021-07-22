@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import CreateIcon from "@material-ui/icons/Create";
 import StarOutlineIcon from "@material-ui/icons/StarOutline";
@@ -9,10 +9,17 @@ import ReviewHeader from "./ReviewHeader";
 
 //Redux
 import { useSelector, useDispatch } from "react-redux";
-import { actionCreators as ShopActions } from "../redux/modules/Shop_module";
+import { actionCreators as shopActions } from "../redux/modules/Shop_module";
 
 const StoreDetail = (props) => {
   const dispatch = useDispatch();
+  const one_info = useSelector((state) => state.shop.one_info);
+  const reviews = useSelector((state) => state.shop.one_info.reviews);
+
+  useEffect(() => {
+    dispatch(shopActions.getStoreDB());
+  }, []);
+  console.log(one_info);
 
   return (
     <React.Fragment>
@@ -21,9 +28,9 @@ const StoreDetail = (props) => {
           <StoreHead>
             <StoreTitle>
               <Title>
-                <StoreName>{props.shopName} </StoreName>
+                <StoreName>{one_info.shopName} </StoreName>
                 <RateOuter>
-                  <RateNumber>{props.star}</RateNumber>
+                  <RateNumber>{one_info.star}</RateNumber>
                 </RateOuter>
               </Title>
               <StoreActionButtonWrap>
@@ -44,15 +51,15 @@ const StoreDetail = (props) => {
             <StatusWrap>
               <CntWrap>
                 <VisibilityIcon fontSize="small" />
-                <Cnt>8,842</Cnt>
+                <Cnt>{one_info.views}</Cnt>
               </CntWrap>
               <CntWrap>
                 <CreateIcon fontSize="small" />
-                <Cnt>21</Cnt>
+                <Cnt>33</Cnt>
               </CntWrap>
               <CntWrap>
                 <StarOutlineIcon fontSize="small" />
-                <Cnt>336</Cnt>
+                <Cnt>128</Cnt>
               </CntWrap>
             </StatusWrap>
           </StoreHead>
@@ -62,11 +69,7 @@ const StoreDetail = (props) => {
             <SectionLine />
           </Section>
           <ReviewHeader />
-          <Review />
-          <Review />
-          <Review />
-          <Review />
-          <Review />
+          <Review />;
         </Storebox>
       </Outer>
     </React.Fragment>
