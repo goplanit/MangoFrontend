@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import DetailHeader from "../components/DetailHeader";
 
 const Text = (props) => {
   const {

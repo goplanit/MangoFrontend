@@ -6,8 +6,15 @@ import styled from "styled-components";
 // import TopItem from "./TopItem";
 // import { history } from "../redux/configureStore";
 
+<<<<<<< master
+
 export default class MultipleItems extends Component {
   render() {
+
+=======
+export default class MultipleItems extends Component {
+  render() {
+>>>>>>> master
     const settings = {
       dots: true,
       infinite: true,
@@ -16,8 +23,13 @@ export default class MultipleItems extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
+<<<<<<< master
+      autoplay: true,
+      autoplaySpeed: 4000,
+=======
       // autoplay: true,
       // autoplaySpeed: 4000,
+>>>>>>> master
       pauseOnHover: true,
       draggable: true,
     };

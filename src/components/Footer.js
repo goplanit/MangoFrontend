@@ -10,11 +10,7 @@ const Footer = (props) => {
         <Inner>
           <div>
             <MpLogo>
-              <Link
-                onClick={() => {
-                  props.history.push("/");
-                }}
-              >
+              <Link>
                 <MpImage
                   src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/mangoplate-gray-logo.svg"
                   alt=""

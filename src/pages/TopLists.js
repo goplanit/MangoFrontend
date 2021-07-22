@@ -40,22 +40,25 @@ const TopLists = (props) => {
                 </TagItemSet>
               </TagContainer>
 
-              <TopItemSet>
+              
+              <TopItemSet className="top">
               {top_list.map((l) => {
                 console.log(top_list);
                 return (
-                    <div 
-                      key={l.id}
-                      onClick={() => {
-                        history.push(`/top_lists`);
-                        window.scrollTo({ top: 0, left: 0 });
-                      }}
-                      >
-                      <TopItem key={l.id} {...l} /> 
-                    </div>
+                  <TopListItem className="TopListItem" 
+                    key={l.id}
+                    onClick={() => {
+                      history.push(`/top_lists`);
+                      window.scrollTo({ top: 0, left: 0 });
+                    }}
+                    >
+                    <TopItem key={l.id} {...l} /> 
+                  </TopListItem>
                 );
               })}
               </TopItemSet>
+
+
               {/* <TopItemSet>
                 <InfoCard></InfoCard>
                 <InfoCard></InfoCard>
@@ -74,31 +77,37 @@ const TopLists = (props) => {
     </React.Fragment>
   );
 };
+
+
+const TagItemSet = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+`;
+const TopListItem = styled.div`
+  position: relative;
+  max-width: 585px;
+  height: 237px;
+  flex: 1 0 40%;
+  margin: 15px;
+  overflow: hidden;
+`;
+
+
 const Main = styled.div`
   display: block;
   margin: 0;
   padding: 0;
 `;
-const TagItemSet = styled.div`
-  border: 0 none;
-  margin: 0;
-  padding: 0;
-  display: block;
-  /* margin-block-start: 1em;
-  margin-block-end: 1em; */
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  /* display: flex;
-  width: 100%;
-  word-break: break-all;
-  word-wrap: break-word;
-  margin-left: 90px; */
-`;
+
 
 const TagContainer = styled.div`
   overflow: hidden;
   position: relative;
   margin-left: 40px;
+
+  margin-bottom: 20px;
+
   padding: 0;
   border: 0 none;
   display: block;
@@ -155,6 +164,7 @@ const TopItemSet = styled.div`
   /* max-width: 1300px;
   padding: 32px 0px 0px 0px; */
   overflow: hidden;
+
   list-style: none;
   border: 0 none;
   margin: 0;
@@ -164,7 +174,11 @@ const TopItemSet = styled.div`
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  padding-inline-start: 40px;
+  padding-inline-start: 40px; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+
 `;
 
 {/* const InfoCard = styled.img`
@@ -273,4 +287,6 @@ const TagItemTwo = styled.button`
   }
 `; */}
 
+
 export default TopLists;
+
