@@ -21,6 +21,7 @@ const Main = (props) => {
               <Button>검색</Button>
             </MainSearch>
           </Container>
+
           <DownloadBtn>
             <a href="https://play.google.com/store/apps/details?id=com.mangoplate">
               <GooglePlay />
@@ -124,6 +125,7 @@ const MainSearch = styled.div`
   justify-content: center;
   margin-top: 55px;
   margin-bottom: 15px;
+  position: relative;
 `;
 
 const DownloadBtn = styled.div`
@@ -159,13 +161,14 @@ const Button = styled.button`
   border: 5px solid #ff7100;
   box-sizing: border-box;
   width: 180px;
-  height: 56px;
+  height: 57px;
   border-radius: 50px;
   font-size: 22px;
   font-weight: bold;
   color: #fff;
   position: absolute;
   margin-left: 630px;
+  /* margin: 0 auto; */
   cursor: pointer;
 `;
 

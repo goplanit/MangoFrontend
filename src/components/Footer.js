@@ -10,11 +10,7 @@ const Footer = (props) => {
         <Inner>
           <div>
             <MpLogo>
-              <Link
-                // onClick={() => {
-                //   props.history.push("/");
-                // }}
-              >
+              <Link>
                 <MpImage
                   src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/mangoplate-gray-logo.svg"
                   alt=""
@@ -173,7 +169,7 @@ const MpLogo = styled.div`
   display: inline-block;
   margin-right: 168px;
   vertical-align: top;
-  
+  cursor: pointer;
 `;
 const SmallTitle = styled.div`
   display: block;
@@ -191,12 +187,12 @@ const MpImage = styled.img`
   //border: none;
   //outline: none;
   //background-size: 137px 45px;
-  //background-image: url("https://mp-seoul-image-production-s3.mangoplate.com/web/resources/mangoplate-gray-logo.svg"); 
+  //background-image: url("https://mp-seoul-image-production-s3.mangoplate.com/web/resources/mangoplate-gray-logo.svg");
 `;
 
 const Link = styled.a`
   display: block;
-`
+`;
 const Outer = styled.div`
   width: 100%;
   height: 818px;

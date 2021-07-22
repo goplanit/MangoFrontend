@@ -1,4 +1,6 @@
+import Grid from "./Grid";
+import Input from "./Input";
 import Text from "./Text";
 import Modal from "./Modal";
 
-export { Text, Modal};
+export { Grid, Input, Text, Modal };

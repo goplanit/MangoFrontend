@@ -18,8 +18,8 @@ export default class MultipleItems extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      // autoplay: true,
-      // autoplaySpeed: 4000,
+      autoplay: true,
+      autoplaySpeed: 4000,
       pauseOnHover: true,
       draggable: true,
     };
