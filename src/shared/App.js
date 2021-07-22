@@ -10,7 +10,7 @@ import { history } from "../redux/configureStore";
 import PageDetail from "../pages/PageDetail";
 import Main from "../pages/Main";
 import TopLists from "../pages/TopLists";
-import { Grid } from "../elements/Index";
+import { Grid } from "../elements/index";
 import ReviewWrite from "../pages/ReviewWrite";
 
 function App() {

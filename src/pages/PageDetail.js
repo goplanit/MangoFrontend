@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Grid } from "../elements/Index";
+import { Grid } from "../elements/index";
 
 //Component
 import DetailHeader from "../components/DetailHeader";
@@ -10,7 +10,6 @@ import DetailSide from "../components/DetailSide";
 import Footer from "../components/Footer";
 
 const PostDetail = (props) => {
-
   return (
     <React.Fragment>
       <Grid>

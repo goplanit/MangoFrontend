@@ -1,15 +1,23 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
+import { config } from "../../shared/config";
 // import { getCookie } from "../../shared/Cookie";
 import axios from "axios";
 
 //action
 const GET_STORE = "GET_STORE";
+const LOADING = "LOADING";
 
 //action creators
 const getStore = createAction(GET_STORE, (store_info) => ({ store_info }));
+const loading = createAction(LOADING, (is_loading) => ({ is_loading }));
 
 const initialState = {
+  list: [],
+  is_loading: false,
+};
+
+const initialPost = {
   shopName: "중앙찜닭",
   keyword: "759_jjimdak",
   star: 3.7,
@@ -43,35 +51,19 @@ const initialState = {
 };
 
 // middleWare
-// const getStoreDB = (page_id = 0) => {
-//   return function (dispatch, getState) {
-//     axios
-//       .get(config.api + "/api/user/" + page_id, { withCredentials: true })
-//       .then((response) => {
-//         let user = response.data.result;
-//         let cookie_user = getCookie("user");
-//         let detail = {
-//           id: user.id,
-//           name: user.name,
-//           image_url: user.imageUrl,
-//           introduce: user.introduce,
-//           skill: user.skill,
-//           username: user.username,
-//           comments: user.comments,
-//           comment_cnt: user.comments.length,
-//           like_cnt: user.likes.length,
-//           is_like: false,
-//         };
-//         for (let i in user.likes) {
-//           if (user.likes[i].author.toString() == cookie_user) {
-//             detail.is_like = true;
-//             break;
-//           }
-//         }
-//         dispatch(getStore(detail));
-//       });
-//   };
-// };
+const getStoreDB = (shopId = null) => {
+  return function (dispatch, getState) {
+    dispatch(loading(true));
+
+    axios
+      .get(`config.api + "/api/shops/" + ${shopId}`, { withCredentials: true })
+      .then((res) => {
+        const storeData = res.data.result[0];
+        console.log(storeData);
+        dispatch(getStore[storeData]);
+      });
+  };
+};
 
 // reducer
 export default handleActions(
@@ -79,6 +71,12 @@ export default handleActions(
     [GET_STORE]: (state, action) =>
       produce(state, (draft) => {
         draft.store_info = action.payload.detail;
+        draft.is_loading = false;
+        console.log(draft.store_info);
+      }),
+    [LOADING]: (state, action) =>
+      produce(state, (draft) => {
+        draft.is_loading = action.payload.is_loading;
       }),
   },
   initialState
@@ -86,6 +84,7 @@ export default handleActions(
 
 const actionCreators = {
   getStore,
+  getStoreDB,
 };
 
 export { actionCreators };
