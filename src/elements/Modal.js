@@ -9,8 +9,10 @@ function rand() {
 }
 
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  // const top = 50 + rand();
+  // const left = 50 + rand();
+  const top = 50;
+  const left = 50; 
 
   return {
     top: `${top}%`,
@@ -24,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'fixed',
     left: "50%",
     top: "50%",
+    
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
@@ -61,7 +64,7 @@ export default function SimpleModal() {
         로그인 하면 가고싶은 식당을<br/>저장할 수 있어요
       </p>
       <div>
-      <KakaoLogin/>
+      <KakaoLogin onClick={() => window.location.href='https://www.ui4u.go.kr/depart/img/content/sub03/img_con03030100_01.jpg'}/>
       </div>
       </Wrapper>
     </div>

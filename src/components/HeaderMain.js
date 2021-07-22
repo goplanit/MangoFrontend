@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import SimpleModal from "../elements/Modal";
 
-const Header = (props) => {
+const HeaderMain = (props) => {
   console.log(props);
   return (
     <React.Fragment>
@@ -24,20 +24,14 @@ const Header = (props) => {
             </Link>
           </div>
           <SimpleModal/>
-            {/* <Image shape="circle" src={props.src}/> */}
           </div>
       </NaviBar>
     </React.Fragment>
   );
 };
 
-Header.defaultProps = {};
+HeaderMain.defaultProps = {};
 
-
-
-// const ProfileButton = styled.div`
-//   cursor: pointer;
-// `;
 const Img = styled.img`
   margin-left: 10px;
   width: 120px;
@@ -62,4 +56,4 @@ const NaviBar = styled.div`
   z-index: 1;
 `;
 
-export default withRouter(Header);
+export default withRouter(HeaderMain);

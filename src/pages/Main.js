@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../components/Header";
+import HeaderMain from "../components/HeaderMain";
 import MultipleItems from "../components/MultipleItems";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 const Main = (props) => {
   return (
     <React.Fragment>
-      <Header></Header>
+      <HeaderMain/>
       <div>
         <MainImg>
           <Container>
@@ -32,31 +32,58 @@ const Main = (props) => {
         </MainImg>
       </div>
 
-      <div>
-        <Wrapper>
-          <TitleWrap>
-            <MatjipList>믿고 보는 맛집 리스트</MatjipList>
-            <Link to="/top_lists">
-              <ListMore>리스트 더보기</ListMore>
-            </Link>
-          </TitleWrap>
-          <div>
-            <MultipleItems />
-          </div>
-          {/* <TopListsCards>
-          </TopListsCards> */}
-        </Wrapper>
-      </div>
+      <Section>
+        <TitleWrap>
+          <MatjipList>믿고 보는 맛집 리스트</MatjipList>
+          <Link to="/top_lists">
+            <ListMore>리스트 더보기</ListMore>
+          </Link>
+        </TitleWrap>
+        <ToplistSlider />
+        <SlickSlider>
+          <MultipleItems />
+        </SlickSlider>
+      </Section>
+
       <Footer></Footer>
     </React.Fragment>
   );
 };
 Main.defaultProps = {};
 
+const SlickSlider = styled.div`
+  margin-bottom: 30px;
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  /* user-select: none; */
+  /* touch-action: pan-y; */
+  border: 0 none;
+  padding: 0;
+`;
+
+const ToplistSlider = styled.div`
+  margin: 0px auto;
+  position: relative;
+  border: 0 none;
+  display: flex;
+  padding: 0;
+`;
+
+const Section = styled.div`
+  padding: 38px 0 36px 0;
+  position: relative;
+  border-top: 1px solid #dbdbdb;
+  display: block;
+  margin:  auto;
+  width: 85vw;
+`;
+
 const TitleWrap = styled.div`
-  /* margin-left: 90px;
-  margin-right: 90px; */
-  margin-bottom: 70px;
+  /* clear: both; */
+  overflow: hidden;
+  border: 0 none;
+  display: block;
 `;
 
 const ListMore = styled.text`
@@ -66,36 +93,30 @@ const ListMore = styled.text`
   text-decoration: underline;
   font-size: 18px;
   font-weight: bold;
+  border: 0 none;
+  cursor: pointer;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 `;
 
-const MatjipList = styled.title`
+const MatjipList = styled.h2`
   float: left;
   display: block;
   /* padding-right: 15px;
   padding-left: 15px; */
+  font-size: 1.438rem;
   color: #ff792a;
   line-height: 1.35em;
   text-align: left;
-  font-size: 1.438rem;
+  font-weight: normal;
+  border: 0 none;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 `;
-
-const Wrapper = styled.div`
-  height: 700px;
-  padding: 38px 0px 36px 0px;
-  margin-left: 90px;
-  margin-right: 90px;
-  margin-bottom: 50px;
-`;
-
-// const TopListsCards = styled.div`
-//   height: 667px;
-//   width: 100%;
-//   align-items: center;
-//   justify-content: center;
-//   display: flex;
-//   background-color: green;
-//   background-repeat: no-repeat;
-// `;
 
 const MainSearch = styled.div`
   display: flex;
@@ -197,4 +218,5 @@ const MainImg = styled.div`
   background-repeat: no-repeat;
   align-items: center;
 `;
+
 export default Main;
