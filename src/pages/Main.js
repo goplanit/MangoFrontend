@@ -126,6 +126,7 @@ const MainSearch = styled.div`
   margin-top: 55px;
   margin-bottom: 15px;
   position: relative;
+
 `;
 
 const DownloadBtn = styled.div`
@@ -161,7 +162,8 @@ const Button = styled.button`
   border: 5px solid #ff7100;
   box-sizing: border-box;
   width: 180px;
-  height: 57px;
+  height: 58px;
+
   border-radius: 50px;
   font-size: 22px;
   font-weight: bold;

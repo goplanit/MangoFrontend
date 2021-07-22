@@ -39,6 +39,7 @@ const TopLists = (props) => {
                   <TagItemThree>#디저트</TagItemThree>
                 </TagItemSet>
               </TagContainer>
+
               
               <TopItemSet className="top">
               {top_list.map((l) => {
@@ -56,6 +57,7 @@ const TopLists = (props) => {
                 );
               })}
               </TopItemSet>
+
 
               {/* <TopItemSet>
                 <InfoCard></InfoCard>
@@ -76,6 +78,7 @@ const TopLists = (props) => {
   );
 };
 
+
 const TagItemSet = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -90,17 +93,21 @@ const TopListItem = styled.div`
   overflow: hidden;
 `;
 
+
 const Main = styled.div`
   display: block;
   margin: 0;
   padding: 0;
 `;
 
+
 const TagContainer = styled.div`
   overflow: hidden;
   position: relative;
   margin-left: 40px;
+
   margin-bottom: 20px;
+
   padding: 0;
   border: 0 none;
   display: block;
@@ -156,7 +163,8 @@ const Article = styled.div`
 const TopItemSet = styled.div`
   /* max-width: 1300px;
   padding: 32px 0px 0px 0px; */
-  /* overflow: hidden;
+  overflow: hidden;
+
   list-style: none;
   border: 0 none;
   margin: 0;
@@ -170,6 +178,7 @@ const TopItemSet = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
+
 `;
 
 {/* const InfoCard = styled.img`
@@ -278,4 +287,6 @@ const TagItemTwo = styled.button`
   }
 `; */}
 
+
 export default TopLists;
+

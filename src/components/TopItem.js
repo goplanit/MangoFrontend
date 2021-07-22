@@ -4,6 +4,7 @@ import styled from "styled-components";
 const TopItem = (props) => {
     console.log(props);
   return (
+
     
       // <ListItem className="ListItem"> 
       //   <Thumb>
@@ -69,6 +70,3 @@ const Desc = styled.div`
   margin-top: 10px;
 `;
 const Hash = styled.div`
-`;
-
-export default TopItem;

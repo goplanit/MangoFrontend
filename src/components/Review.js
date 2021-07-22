@@ -1,49 +1,61 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import ReviewImage from "../elements/ReviewImage";
 
 //Redux
-import { useSelector } from "react-redux";
-import { actionCreators as shopActions } from "../redux/modules/Review_module";
+import { useSelector, useDispatch } from "react-redux";
+import { actionCreators as shopActions } from "../redux/modules/Shop_module";
 
 const Review = (props) => {
-  const reviewData = useSelector((state) => state.review.reviews);
-  const createAt = reviewData.createdAt;
-  const updateDate = createAt.split("T", 1);
+  const dispatch = useDispatch();
+  const one_info = useSelector((state) => state.shop.one_info.reviews);
+  console.log(one_info);
+
+  useEffect(() => {
+    dispatch(shopActions.getStoreDB());
+  }, []);
 
   return (
     <Container>
-      <ReviewItem>
-        <ReviewList>
-          <ReviewLink>
-            <ReviewUser>
-              <UserPictureWrap>
-                <UserPictureimg />
-              </UserPictureWrap>
-              <UserPictureName>{reviewData.nickname}</UserPictureName>
-              <UserstateWrap>
-                <UserstateReviewCnt>
-                  <EmijiWrite />
-                  {reviewData.ReviewWriteCnt}
-                </UserstateReviewCnt>
-                <UserstateReviewCnt>
-                  <EmijiFriend />
-                  {reviewData.ReviewFriendCnt}
-                </UserstateReviewCnt>
-              </UserstateWrap>
-            </ReviewUser>
-            <ReviewContents>
-              <ReviewContentWrap>
-                <ReviewContentText>{reviewData.text}</ReviewContentText>
-                <ReviewDate>{updateDate[0]}</ReviewDate>
-              </ReviewContentWrap>
-            </ReviewContents>
-            <ReviewEmojiWrap>
-              <ReviewEmoji />
-              <ReviewEmojiText>맛있다</ReviewEmojiText>
-            </ReviewEmojiWrap>
-          </ReviewLink>
-        </ReviewList>
-      </ReviewItem>
+      {one_info.map((val) => {
+        const createAt = val.createdAt;
+        console.log(createAt);
+        const updateDate = createAt.split("T", 1);
+        console.log(val);
+        console.log(props);
+        return (
+          <ReviewItem>
+            <ReviewList>
+              <ReviewLink>
+                <ReviewUser>
+                  <UserPictureWrap>
+                    <ReviewImage src={val.profilePic} />
+                  </UserPictureWrap>
+                  <UserPictureName>{props.reviews.nickname}</UserPictureName>
+                  <UserstateWrap>
+                    <UserstateReviewCnt>
+                      <EmijiWrite />1
+                    </UserstateReviewCnt>
+                    <UserstateReviewCnt>
+                      <EmijiFriend />0
+                    </UserstateReviewCnt>
+                  </UserstateWrap>
+                </ReviewUser>
+                <ReviewContents>
+                  <ReviewContentWrap>
+                    <ReviewContentText>{val.text}</ReviewContentText>
+                    <ReviewDate>{updateDate}</ReviewDate>
+                  </ReviewContentWrap>
+                </ReviewContents>
+                <ReviewEmojiWrap>
+                  <ReviewEmoji />
+                  <ReviewEmojiText>{val.rate}</ReviewEmojiText>
+                </ReviewEmojiWrap>
+              </ReviewLink>
+            </ReviewList>
+          </ReviewItem>
+        );
+      })}
     </Container>
   );
 };
@@ -91,14 +103,6 @@ const UserPictureWrap = styled.div`
   overflow: hidden;
   background-color: #dbdbdb;
 `;
-const UserPictureimg = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  border: none;
-  vertical-align: top;
-`;
 const UserPictureName = styled.span`
   margin-bottom: 2px;
   font-size: 13px;
@@ -117,12 +121,14 @@ const EmijiWrite = styled.span`
   background-position: -996px -600px;
   width: 9px;
   height: 8px;
+  margin-right: 3px;
 `;
 const EmijiFriend = styled.span`
   background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
   background-position: -998px -729px;
   width: 8px;
   height: 8px;
+  margin: 0 3px;
 `;
 
 const UserstateReviewCnt = styled.div`
@@ -187,7 +193,7 @@ const ReviewEmojiText = styled.span`
   font-weight: 600;
 `;
 
-/* Review.defaultProps = {
+Review.defaultProps = {
   reviews: {
     reviewId: "12d102d9j1d09cds109",
     shop_name: "꼬꼬닭",
@@ -203,6 +209,6 @@ const ReviewEmojiText = styled.span`
     ReviewWriteCnt: "1030",
     ReviewFriendCnt: "162",
   },
-}; */
+};
 
 export default Review;

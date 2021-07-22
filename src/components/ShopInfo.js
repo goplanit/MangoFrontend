@@ -7,37 +7,30 @@ import { actionCreators as shopActions } from "../redux/modules/Shop_module";
 
 const ShopInfo = (props) => {
   const dispatch = useDispatch();
-  console.log(props);
-  const shopData = useSelector((state) => state.shop.data);
-  const menuList = useSelector((state) => state.shop.menuList);
-  const imgUrl = useSelector((state) => state.shop.img_url);
-  console.log(shopData);
+  const one_info = useSelector((state) => state.shop.one_info);
 
   useEffect(() => {
-    console.log("하아....");
     dispatch(shopActions.getStoreDB());
   }, []);
 
   return (
     <Info>
       <InfoBody>
-        {shopData.map((val, index) => {
-          const i = index;
+        {one_info.data.map((val, index) => {
           return (
             <InfoTr>
-              <InfoTh>{shopData[i][0]}</InfoTh>
-              <InfoTd>{shopData[i][1]}</InfoTd>
+              <InfoTh>{val[0]}</InfoTh>
+              <InfoTd>{val[1]}</InfoTd>
             </InfoTr>
           );
         })}
         <InfoTr>
           <InfoTh>메뉴</InfoTh>
-          {menuList.map((val, index) => {
-            const i = index;
+          {one_info.menuList.map((val, index) => {
             return (
               <MenuItem>
-                <MenuDetail>{menuList[i][0]}</MenuDetail>
-                <MenuDetailRight>{menuList[i][1]}</MenuDetailRight>
+                <MenuDetail>{val[0]}</MenuDetail>
+                <MenuDetailRight>{val[1]}</MenuDetailRight>
               </MenuItem>
             );
           })}
@@ -45,11 +38,10 @@ const ShopInfo = (props) => {
         <InfoTr>
           <InfoTh></InfoTh>
           <MenuPicWrap>
-            {imgUrl.map((val, index) => {
-              const i = index;
+            {one_info.img_url.map((val, index) => {
               return (
                 <InfoTd>
-                  <MenuPic src={imgUrl[i]}></MenuPic>
+                  <MenuPic src={val}></MenuPic>
                 </InfoTd>
               );
             })}
