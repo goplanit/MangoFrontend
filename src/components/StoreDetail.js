@@ -25,7 +25,6 @@ const StoreDetail = (props) => {
                 <RateOuter>
                   <RateNumber>{props.star}</RateNumber>
                 </RateOuter>
-                <Branch>{props.branch}</Branch>
               </Title>
               <StoreActionButtonWrap>
                 <ReviewWriteButton

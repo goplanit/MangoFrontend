@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // import { history } from "../redux/configureStore";
-import { Grid } from "../elements/Index";
+import { Grid } from "../elements/index";
 import DetailLogo from "../shared/DetailLogo.png";
 
 // material-ui
@@ -49,10 +49,10 @@ const DetailHeader = (props) => {
             />
           </HeaderLogo>
           <HeaderSearchBox>
-            <SearchIcon className={classes.search_icon} fontSize="50" />
-            <searchLabel>
+            <SearchIcon className={classes.search_icon} fontSize="large" />
+            <SearchLabel>
               <InputText />
-            </searchLabel>
+            </SearchLabel>
           </HeaderSearchBox>
           <HeaderMenuList>
             <HeaderMenuItem>
@@ -136,7 +136,7 @@ const HeaderSearchBox = styled.div`
   margin: 0;
 `;
 
-const searchLabel = styled.label`
+const SearchLabel = styled.label`
   /* background-size: auto; */
   align-items: center;
   height: 50px;

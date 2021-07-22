@@ -9,7 +9,6 @@ const Review = (props) => {
   const reviewData = useSelector((state) => state.review.reviews);
   const createAt = reviewData.createdAt;
   const updateDate = createAt.split("T", 1);
-  console.log(updateDate);
 
   return (
     <Container>

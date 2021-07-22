@@ -52,7 +52,6 @@ Grid.defaultProps = {
   bg: false,
   center: false,
   _onClick: () => {},
-  height: false,
   border_radius: false,
   justifyContent: false,
   alignItems: false,

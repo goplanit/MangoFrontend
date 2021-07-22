@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 //Redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { actionCreators as shopActions } from "../redux/modules/Shop_module";
 
 const ShopInfo = (props) => {
+  const dispatch = useDispatch();
+  console.log(props);
   const shopData = useSelector((state) => state.shop.data);
   const menuList = useSelector((state) => state.shop.menuList);
   const imgUrl = useSelector((state) => state.shop.img_url);
   console.log(shopData);
+
+  useEffect(() => {
+    console.log("하아....");
+    dispatch(shopActions.getStoreDB());
+  }, []);
 
   return (
     <Info>

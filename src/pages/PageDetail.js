@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Grid } from "../elements/index";
+import { actionCreators as shopActions } from "../redux/modules/Shop_module";
+import { useSelector, useDispatch } from "react-redux";
 
 //Component
 import DetailHeader from "../components/DetailHeader";
@@ -9,7 +11,15 @@ import StoreDetail from "../components/StoreDetail";
 import DetailSide from "../components/DetailSide";
 import Footer from "../components/Footer";
 
-const PostDetail = (props) => {
+const PageDetail = (props) => {
+  const dispatch = useDispatch();
+  const detail = useSelector((state) => state);
+  console.log(detail);
+
+  // React.useEffect(() => {
+  //   dispatch(shopActions.getStoreDB());
+  // }, []);
+
   return (
     <React.Fragment>
       <Grid>
@@ -56,4 +66,4 @@ const SideWrap = styled.div`
   background-color: #f6f6f6;
 `;
 
-export default PostDetail;
+export default PageDetail;

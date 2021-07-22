@@ -10,19 +10,15 @@ import { history } from "../redux/configureStore";
 import PageDetail from "../pages/PageDetail";
 import Main from "../pages/Main";
 import TopLists from "../pages/TopLists";
-import { Grid } from "../elements/index";
 import ReviewWrite from "../pages/ReviewWrite";
 
 function App() {
   return (
     <ReactContainer>
       <BrowserRouter>
-        <Route path="/restaurants" exact component={PageDetail} />
-      </BrowserRouter>
-
-      <BrowserRouter>
         <ConnectedRouter history={history}>
           <Route path="/" exact component={Main} />
+          <Route path="/restaurants" exact component={PageDetail} />
           <Route path="/reviews/:shop_name" exact component={ReviewWrite} />
           <Route path="/top_lists" exact component={TopLists} />
         </ConnectedRouter>

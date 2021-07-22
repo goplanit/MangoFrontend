@@ -5,9 +5,25 @@ import axios from "axios";
 
 //action
 const GET_REVIEW = "GET_REVIEW";
+const ADD_REVIEW = "ADD_REVIEW";
+const REMOVE_REVIEW = "REMOVE_REVIEW";
+const EDIT_REVIEW = "EDIT_REVIEW";
 
 //action creators
-const getReview = createAction(GET_REVIEW, (review) => ({ review }));
+const getReviews = createAction(GET_REVIEW, (reviews) => ({ reviews }));
+const addReview = createAction(ADD_REVIEW, (review) => ({ review }));
+const removeReview = createAction(REMOVE_REVIEW, (reviewId) => ({
+  reviewId,
+}));
+const editReview = createAction(EDIT_REVIEW, (reviewId, review) => ({
+  reviewId,
+  review,
+}));
+
+// 식당 아이디에 해당하는 댓글 조회  "GET"
+// 리뷰 작성  "POST"  /api/reviews/:shopId
+// 리뷰 수정  "PUT"  api/reviews/:reviewId
+// 리뷰 삭제  "DELETE"   api/reviews/:shopId/:reviewId
 
 const initialState = {
   reviews: {
@@ -27,20 +43,19 @@ const initialState = {
   },
 };
 
-
 // reducer
 export default handleActions(
   {
     [GET_REVIEW]: (state, action) =>
       produce(state, (draft) => {
-        draft.review = action.payload.review;
+        draft.reviews = action.payload.reviews;
       }),
   },
   initialState
 );
 
 const actionCreators = {
-  getReview,
+  getReviews,
 };
 
 export { actionCreators };
